@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Jamun.AI — One stop for web development, SEO, digital marketing, analytics, machine learning & AI solutions." />
+    <meta name="theme-color" content="#0ea5e9" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="js/script.js"></script>
+
+    <title>Contact — Jamun.AI</title>
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html" aria-label="Jamun.AI Home">
+      <img src="assets/logo.png" alt="Jamun.AI logo" width="40" height="40"/>
+      <span>Jamun.AI</span>
+    </a>
+    <nav class="nav" role="navigation" aria-label="Primary">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html" class="btn btn-primary">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+    <main class="page container">
+      <header class="page-head">
+        <h1>Contact us</h1>
+        <p>Tell us about your goals and challenges. We’ll reply within 1 business day.</p>
+      </header>
+
+      <section class="grid-2 contact-grid">
+       <form id="contact-form" class="form-card" onsubmit="return sendMailto(event)">
+  <div class="grid-2">
+    <div>
+      <label for="name">Name</label>
+      <input id="name" name="Name" type="text" required>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input id="email" name="Email" type="email" required>
+    </div>
+    <div>
+      <label for="phone">Phone</label>
+      <input id="phone" name="Phone" type="tel" placeholder="+91 98765 43210">
+    </div>
+    <div>
+      <label for="service">Service</label>
+      <select id="service" name="Service">
+        <option value="">Select a service</option>
+        <option>Web Development</option>
+        <option>SEO</option>
+        <option>Digital Marketing</option>
+        <option>Branding</option>
+        <option>Analytics</option>
+        <option>Master Data Management</option>
+        <option>Data Science</option>
+      </select>
+    </div>
+  </div>
+
+  <label for="message">Message</label>
+  <textarea id="message" name="Message" rows="6" required></textarea>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Send Message</button>
+    <p class="form-note" id="contact-note" role="status" aria-live="polite"></p>
+  </div>
+  <p class="muted">Or email us at <a href="mailto:Jamun.aiworld@gmail.com">Jamun.aiworld@gmail.com</a></p>
+</form>
+
+
+        <aside class="contact-side">
+          <div class="card">
+            <h3>Reach us</h3>
+            <p>Email: <a href="mailto:Jamun.aiworld@gmail.com">Jamun.aiworld@gmail.com</a></p>
+            <p>Phone: <a href="tel:+919999999999">+91 99999 99999</a></p>
+          </div>
+          <div class="card">
+            <h3>Location</h3>
+            <p>India (serving clients worldwide)</p>
+          </div>
+          <div class="card">
+            <h3>Follow</h3>
+            <p><a href="#" aria-label="LinkedIn">LinkedIn</a> • <a href="#" aria-label="Twitter">X</a> • <a href="#" aria-label="Instagram">Instagram</a></p>
+          </div>
+        </aside>
+      </section>
+    </main>
+    <footer class="site-footer">
+  <div class="container grid-3">
+    <div>
+      <div class="brand-inline">
+        <img src="assets/logo.png" alt="Jamun.AI logo small" width="32" height="32"/>
+        <strong>Jamun.AI</strong>
+      </div>
+      <p>One stop for web, SEO, digital marketing, analytics, MDM, and AI solutions.</p>
+      <ul class="trust">
+        <li>SSL Secure</li>
+        <li>Data Privacy First</li>
+        <li>Google‑friendly SEO</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul class="links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Newsletter</h4>
+      <form id="newsletter-form" class="newsletter" aria-label="Newsletter signup">
+        <label for="newsletter-email" class="sr-only">Email</label>
+        <input id="newsletter-email" type="email" placeholder="Enter your email" required aria-required="true" />
+        <button class="btn btn-secondary" type="submit">Subscribe</button>
+        <p class="form-note">No spam. Unsubscribe any time.</p>
+      </form>
+      <p class="contact-links">Email: <a href="mailto:Jamun.aiworld@gmail.com">Jamun.aiworld@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="container footnote">
+    <small>© <span id="year"></span> Jamun.AI. All rights reserved.</small>
+  </div>
+</footer>
+
+  </body>
+</html>
