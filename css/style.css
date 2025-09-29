@@ -1,15 +1,19 @@
 
 :root{
-  --bg:#ffffff;
-  --fg:#0f172a;
-  --muted:#475569;
-  --line:#e5e7eb;
-  --primary:#0ea5e9; /* electric blue */
-  --accent:#6366f1;  /* indigo */
-  --card:#f8fafc;
-  --success:#10b981;
-  --shadow: 0 10px 30px rgba(2,6,23,.08);
+  --bg: #ffffff;
+  --fg: #0f1724;
+  --muted: #6B7280;
+  --line: #E6E8EE;
+  --accent: #0A5BFF;     /* primary (electric blue) */
+  --accent-2: #00B3A4;   /* secondary (teal) */
+  --accent-3: #FFB620;   /* warm pop (gold) */
+  --card: #ffffff;
+  --success: #10b981;
+  --shadow-1: 0 10px 25px rgba(10,91,255,0.08);
+  --shadow-2: 0 6px 18px rgba(17,24,39,0.06);
+  --radius-lg: 20px;
 }
+
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -67,12 +71,86 @@ img{max-width:100%;display:block}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 
-.cards .card{display:block;background:var(--bg);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);text-decoration:none;color:inherit;transition:.25s transform}
-.cards .card:hover{transform:translateY(-4px)}
-.card .icon{display:inline-flex;width:48px;height:48px;background:var(--card);border-radius:12px;align-items:center;justify-content:center;border:1px solid var(--line);margin-bottom:10px}
-.card h3{margin:6px 0 8px}
-.card p{color:var(--muted);margin:0 0 8px}
-.card .link{font-weight:600;color:var(--accent)}
+/* Service card: grid layout (icon | content | CTA) */
+.cards .card {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 18px;
+  align-items: center;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: inherit;
+  transition: transform .18s ease, box-shadow .18s ease;
+  min-height: 88px;
+}
+
+/* Hover lift */
+.cards .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(10,91,255,0.08);
+}
+
+/* Icon area — matches either <div class="icon"> or first-child <img> */
+.cards .card .icon,
+.cards .card > img:first-child {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(10,91,255,0.08), rgba(0,179,164,0.04));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 18px rgba(10,91,255,0.04);
+  grid-column: 1;
+  flex: 0 0 56px;
+}
+
+/* Icon image sizing */
+.cards .card .icon img,
+.cards .card > img:first-child {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+/* Main content sits in column 2 */
+.cards .card h2,
+.cards .card h3,
+.cards .card .card-body,
+.cards .card > h2,
+.cards .card > h3 {
+  grid-column: 2;
+  margin: 0 0 6px;
+  color: var(--fg);
+}
+
+/* Paragraphs in column 2 */
+.cards .card p {
+  grid-column: 2;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* CTA / link column on the right */
+.cards .card .link,
+.cards .card .card-cta,
+.cards .card a.learn {
+  grid-column: 3;
+  justify-self: end;
+  text-align: right;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
 
 .highlight{margin:60px auto}
 .checks{padding-left:20px}
@@ -187,3 +265,145 @@ textarea{resize:vertical}
   font-size: 14px;
 }
 
+.logos,
+.clients,
+.client-logos,
+.trusted-logos,
+.brand-logos,
+.our-clients,
+.partner-logos {
+  display: none !important;
+}
+
+/* ------------------------
+   Vibrant button & CTA styles
+   ------------------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 22px;
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Primary filled button: gradient pill */
+.btn.btn-primary,
+.btn-primary {
+  color: #fff !important;
+  background-image: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+  box-shadow: var(--shadow-1);
+  text-decoration: none;
+}
+
+/* Ghost/outline variant */
+.btn.btn-ghost,
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(10,91,255,0.12);
+  color: var(--fg);
+}
+
+/* Hover / focus */
+.btn:hover,
+.btn:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(10,91,255,0.10);
+  outline: none;
+}
+
+/* Accessible focus style */
+.btn:focus-visible {
+  box-shadow: 0 8px 20px rgba(10,91,255,0.12);
+  outline: 3px solid rgba(10,91,255,0.06);
+}
+
+/* ------------------------
+   Hero enhancements
+   ------------------------ */
+.hero {
+  background: linear-gradient(180deg, rgba(10,91,255,0.06), rgba(0,179,164,0.02));
+  position: relative;
+  overflow: visible;
+  padding: 56px 0;
+}
+
+/* Add a blurred decorative blob if you include a .blob element inside .hero */
+.hero .blob {
+  position: absolute;
+  right: -60px;
+  top: -30px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle at 30% 30%, rgba(10,91,255,0.20), transparent 40%),
+              radial-gradient(circle at 80% 70%, rgba(0,179,164,0.14), transparent 35%);
+  filter: blur(28px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ensure hero content sits above the blob */
+.hero .container, .hero .hero-grid { position: relative; z-index: 2; }
+
+/* Gradient text utility — use in headline with <span class="accent-text">word</span> */
+.accent-text {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .hero .blob { animation: none; filter: blur(26px); }
+  .btn { transition: none; transform: none; }
+}
+
+/* 3-column grid for services hub */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 1024px) {
+  .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .grid-3 { grid-template-columns: 1fr; }
+}
+
+/* Responsive: stack the card on small screens */
+@media (max-width: 720px) {
+  .cards .card {
+    grid-template-columns: 56px 1fr;
+    grid-template-rows: auto auto;
+    gap: 12px;
+    padding: 14px;
+    min-height: auto;
+  }
+
+  .cards .card .link,
+  .cards .card .card-cta,
+  .cards .card a.learn {
+    grid-column: 1 / -1;
+    justify-self: start;
+    text-align: left;
+    margin-top: 8px;
+  }
+
+  .cards .card .icon,
+  .cards .card > img:first-child {
+    width: 48px;
+    height: 48px;
+  }
+
+  .cards .card h2, .cards .card h3 { font-size: 16px; }
+  .cards .card p { font-size: 13px; }
+}

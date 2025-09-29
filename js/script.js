@@ -29,20 +29,6 @@ if (nsForm) {
   });
 }
 
-// Contact form validation (demo)
-const cForm = document.getElementById('contact-form');
-if (cForm) {
-  cForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    if (!name) return alert('Please enter your name.');
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return alert('Please enter a valid email.');
-    cForm.reset();
-    alert('Thanks! We will get back to you within 1 business day.');
-  });
-}
-
 const cForm = document.getElementById('contact-form');
 if (cForm) {
   cForm.addEventListener('submit', (e) => {
@@ -59,11 +45,24 @@ if (cForm) {
       return;
     }
 
+    // If mailto action → let browser open email client
+    if (isMailto) {
+      // do NOT preventDefault → allow mailto link to trigger
+      return true;
+    }
+
+    // If using a service like Formspree, handle with fetch/ajax here
+    // For now, just fallback demo alert
+    e.preventDefault();
+    alert('Thanks! We will get back to you within 1 business day.');
+    cForm.reset();
+  });
+}
+
+
     // If using mailto, let the browser open the email client (do NOT preventDefault)
     if (!isMailto) {
       e.preventDefault();          // keep your non-mailto demo flow if any
       alert('Thanks! We will get back to you within 1 business day.');
       cForm.reset();
-    }
-  });
-}
+    };
